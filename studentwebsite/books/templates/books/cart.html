@@ -1,0 +1,154 @@
+{% extends "book_bootstrap.html" %}
+{% load cart_tag %}
+{% load static %}
+{% load humanize %}
+{% block title %}Cart | Book Store
+{% endblock title %}
+<!--=============================================================-->
+{% block navbar %}
+{% load app_tags %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+  <!--<div class="container-fluid">-->
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <!--<ul class="nav navbar-nav">
+      {% url 'books' as books %}
+      <li {% if request.get_full_path == books %}class="active"{% endif %}>
+          <a href="{% url 'books:all' %}">Books</a></li>
+    </ul>-->
+    <!--======================================================================================-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+         </ul>
+    <!--======================================================================================-->
+    <ul class="nav navbar-nav navbar-right loginbutton">
+        {% if user.is_authenticated %}
+        <li style="margin-top:5px;">
+        <a href="{% url 'books:book_create' %}" style="color:white;">Add Book</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/books/fav" style="color:white;">Fav Books</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/cart/cart-detail" style="color:white;">Cart</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:white;">
+                <img class="gravatar" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'books:all' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'books:all' %}" style="color:white;">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</header>
+{% endblock %}
+{% block content %}
+<div class="container"style="margin-top:70px;width:100%;">
+<div class="cartpagebutton">
+Total Item: <b>{{request.session.cart|length}}</b>
+</div>
+<div class="cartpagebutton">
+Cart total: <b>(&#x20B9;)
+{% for key,value in request.session.cart.items %}
+{{value.price|multiply:value.quantity}}
+{% endfor %}
+
+</b>
+</div>
+{% if request.session.cart.items %}
+{% for key,value in request.session.cart.items %}
+<div style="border-left: 5px solid #2196F3;background-color:#d1edf2;margin:2.5px;">
+<div style="display:inline-block;width:40%;align: center;vertical-align: middle;">
+<img  class="detailimg" src="{% url 'books:book_image' value.product_id %}">
+</div>
+<div class="cartimgdetail"style="">
+<p><b>Title: </b>{{value.name}}</p>
+<p><b>Price: (&#x20B9;)</b>{{value.price}}</p>
+<p><b>Total: (&#x20B9;)</b>{{ value.price|multiply:value.quantity }}</p>
+<a href="{% url 'cart:item_increment' value.product_id %}" style="text-decoration:none;">
+<div class="btn plusminus"><b style="padding-right:2%;">+</b></div>
+</a> <b>{{value.quantity}}</b>
+<a href="{% url 'cart:item_decrement' value.product_id %}" style="text-decoration:none;">
+<div class="btn plusminus"><b>-</b></div>
+</a>
+<a style="text-decoration:none;color:white;" href="{% url 'cart:item_clear' value.product_id %}">
+<div>
+<button class="itemclear">
+Item clear
+</button>
+</div>
+</a>
+</div>
+</div>
+{% endfor %}
+
+<a style="text-decoration: none;color:white;" href="{% url 'cart:cart_clear' %}">
+<div class="clearcart">
+<b>Clear Cart</b>
+</div>
+</a>
+<a style="text-decoration: none;color:white;" href="{% url 'books:all' %}">
+<div class="backtobooklist">
+<b>&lArr; Back to book list</b>
+</div>
+</a>
+<a style="text-decoration: none;color:white;" href="{% url 'books:all' %}">
+<div class="checkout">
+<b>Checkout &rArr;</b>
+</div>
+</a>
+</div>
+{% else %}
+    
+    <p style="text-align:center;font-weight:bold;font-size:150%;">Your cart is empty.</p>
+    
+    <a style="text-decoration: none;color:white;" href="{% url 'cart:cart_clear' %}">
+<div class="clearcart">
+<b>Clear Cart</b>
+</div>
+</a>
+<a style="text-decoration: none;color:white;" href="{% url 'books:all' %}">
+<div class="backtobooklist">
+<b>&lArr; Back to book list</b>
+</div>
+</a>
+<a style="text-decoration: none;color:white;" href="{% url 'books:all' %}">
+<div class="checkout">
+<b>Checkout &rArr;</b>
+</div>
+</a>
+</div>
+    
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About
+{% endblock title %}
+{% block header %}
+<header class="about">
+<nav  id="myHeader" class="navbar navbar-expand-lg navbar-dark myNav">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+        <!--<a class="navbar-brand" href="#" style="font-size:225%">Student Website</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <h1 id="h1heading">About Us</h1>
+      </header>
+{% endblock header %}
+{% block body %}
+<!--<div class="container-fluid px-0" >
+<img src="{% static "website/coding.jpg" %}" class="d-block w-100" alt="random pic"  height="auto">
+</div>-->
+<div class="about-section">
+  <h2 style="">Our Team</h2>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="{% static "website/deep.JPG" %}" alt="Deepanshu" style="width:38%">
+      <div class="container">
+        <h2>Deepanshu Singh</h2>
+        <p class="title">Developer</p>
+        <p>Description</p>
+        <p>deep@example.com</p>
+        <p><button class="buttonaboutpage">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+       <img src="{% static "website/aarushi.jpeg" %}" alt="Aarushi" style="width:36%">
+      <div class="container">
+        <h2>Aarushi Mehra</h2>
+        <p class="title">Developer</p>
+        <p>Description.</p>
+        <p>aarushi@example.com</p>
+        <p><button class="buttonaboutpage">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+       <img src="{% static "website/vandit.jpeg" %}" alt="Vandit" style="width:43%">
+      <div class="container">
+        <h2>Vandit Chourasia</h2>
+        <p class="title">Developer</p>
+        <p>Description.</p>
+        <p>vandit@example.com</p>
+        <p><button class="buttonaboutpage">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+       <img src="{% static "website/aashu.JPG" %}" alt="Aashutosh" style="width:35%">
+      <div class="container">
+        <h2>Aashutosh Gujrati</h2>
+        <p class="title">Developer</p>
+        <p>Description.</p>
+        <p>aashu@example.com</p>
+        <p><button class="buttonaboutpage">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

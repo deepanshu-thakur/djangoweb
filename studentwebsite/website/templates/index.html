@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home
+{% endblock title %}
+{% block header %}
+<header  class="home">
+  <nav  id="myHeader" class="navbar navbar-expand-lg navbar-dark myNav">
+  <a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+        <!--<a class="navbar-brand" href="#" style="font-size:225%">Student Website</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!--<div class="">
+              <img src="{% static "website/logoweb.png" %}" style="width:75%">
+            </div>-->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <!--=============================================================================-->
+          
+        </div>
+      </nav>
+      <h1 id="h1heading">Welcome to Book A Room!</h1>
+<h1 id="h1subheading">&bull;Buy or sell books	&bull; Find or Advertise rooms&bull;</h1>
+      </header>
+{% endblock header %}
+{% block body %}
+<div class="bigscreen">
+<div class="homepagecontain">
+      <a href="/books">
+        <img  class="homepageimgphone" src={% static "website/books_home.jpg" %}>
+        <div class="homepagemiddle" style="">
+            Buy or Sell<div class="homepagetext">Now</div>
+        </div></a>
+</div>
+<div class="homepagetextdiv"style="">
+      <h1>Second Hand Books</h1>
+      <p style="">
+      The books can be purchased through the online mode and also sold. The updates of the books that are available can be mentioned through this website.
+      <ul>
+      <li>24*7 availability</li>
+      <li>Description</li>
+      <li>Online payment</li>
+      <li>Large Number of Choices</li>
+      </ul>
+      </p>
+</div>
+<hr>
+<div class="homepagetextdiv"style="">
+      <h1>Find PG</h1>
+      <p style="">
+      Get the best place to live at a single click!!!
+      Top criterions:
+      <ul>
+      <li>Budget and location</li>
+      <li>The person people they would have to live with</li>
+      <li>Amenities</li>
+      </ul>
+
+      </p>
+</div>
+<div class="homepagecontain">
+      <a href="/payingguest">
+        <img  class="homepageimgphone" src={% static "website/pg.jpg" %}>
+        <div class="homepagemiddle" style="">
+            Find PG<div class="homepagetext">Now</div>
+        </div></a>
+</div>
+</div>
+<div class="myflip">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src={% static "website/books_home.jpg" %} alt="Avatar" style="width:100%;display: block;margin-left: auto;margin-right: auto;">
+      <div class="centered"style=""><b>See More</b></div>
+    </div>
+    <div class="flip-card-back">
+      <h3 style="color:white;">Second Hand Books</h3>
+      <p style="color:white;">
+      Buy or sell second hand books
+      <ul style="text-align:left;">
+      <li>24*7 availability</li>
+      <li>Online payment</li>
+      <li>Large Number of Choices</li>
+      </ul>
+      </p>
+      <a href="/books">
+      <div style="color:white;background-color:#28a745;text-align:center;width:90%;margin:auto;font-size:125%;"><b>Visit Now</b>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src={% static "website/pg.jpg" %} alt="Avatar" style="width:100%;display: block;margin-left: auto;margin-right: auto;">
+      <div class="centered"style=""><b>See More</b></div>
+    </div>
+    <div class="flip-card-back">
+      <h3 style="color:white;">Find PG</h3>
+      <p style="color:white;">
+      Best place to live at a single click!
+      <ul style="text-align:left;">
+      <li>Budget and location</li>
+      <li>People they want to live with</li>
+      <li>Amenities</li>
+      </ul>
+
+      </p>
+      <a href="/payingguest">
+      <div style="color:white;background-color:#28a745;text-align:center;width:90%;margin:auto;font-size:125%;"><b>Visit Now</b>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock body %}

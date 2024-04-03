@@ -1,0 +1,165 @@
+{% extends "base_bootstrap.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}Services | PG
+{% endblock title %} <!-- https://docs.djangoproject.com/en/3.0/ref/contrib/humanize -->
+{% block head %}
+<style>
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: none;
+  background-color: rgba(0,0,0,0.75); /*dim the background*/
+}
+</style>
+{% endblock %}
+<!--======================================-->
+{% block navbar %}
+{% load app_tags %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+
+  <!--<div class="container-fluid">-->
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <!--<ul class="nav navbar-nav">
+      {% url 'books' as books %}
+      <li {% if request.get_full_path == books %}class="active"{% endif %}>
+          <a href="{% url 'books:all' %}">Books</a></li>
+    </ul>-->
+    <!--======================================================================================-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+         </ul>
+         <hr style="border: 5px solid white;">
+    <!--======================================================================================-->
+    <ul class="nav navbar-nav navbar-right loginbutton">
+        {% if user.is_authenticated %}
+        <li style="margin-top:5px;">
+        <a href="{% url 'payingguest:payingguest_create' %}" style="color:white;">Add PG</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/payingguest/fav" style="color:white;">Fav PG</a>
+        </li>
+        
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:white;">
+                <img class="gravatar" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'payingguest:all' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'payingguest:all' %}" style="color:white;">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</header>
+{% endblock %}
+<!--======================================-->
+{% block content %}
+<div class="container detailpage">
+{% if payingguest.content_type %}
+<div id="overlay" class="overlay" style="text-align: center;"
+   onclick="document.getElementById('overlay').style.display = 'none';" >
+<img style="" class="detailimgpg" src="{% url 'payingguest:payingguest_image' payingguest.id %}">
+</div>
+{% endif %}
+{% if payingguest.content_type %}
+<div class="detailpageimgdivpg">
+<img class="detailpageimgpg" src="{% url 'payingguest:payingguest_image' payingguest.id %}"
+    onclick="document.getElementById('overlay').style.display = 'block';">
+    <p class="zoomtext" style="">(Click/Tap to zoom.)
+    {% if payingguest.owner == user %}
+    <a href="{% url 'payingguest:payingguest_update' payingguest.id %}"><i class="fa fa-pencil"></i></a>
+    <a href="{% url 'payingguest:payingguest_delete' payingguest.id %}"><i class="fa fa-trash"></i></a>
+    {% endif %}
+    
+    </p>
+    </div>
+{% endif %}
+<hr>
+<div class="bookdetails"style="">
+<h1>City: {{ payingguest.City }}</h1>
+<p style="font-size:150%;">
+   <b>Rent(&#x20B9;):</b> {{ payingguest.rent }}
+</p>
+<p style="font-size:125%;">
+<b>Condition: </b>{{ payingguest.condition }}
+</p>
+<p style="font-size:125%;">
+<b>Owner Address: </b>{{ payingguest.user_address }}
+</p>
+<p style="font-size:125%;">
+<b>PG Address: </b>{{ payingguest.pg_address }}
+</p>
+
+<p>
+<b>Uploaded: </b>({{ payingguest.updated_at|naturaltime }})
+</p>
+<p>
+<b>Uploaded by: </b>{{ payingguest.owner}}
+</p>
+</div>
+
+{% if user.is_authenticated %}
+<br clear="all"/>
+
+<p>
+<div class="commentbox">
+{% load crispy_forms_tags %}
+<form method="post" action="{% url 'payingguest:payingguest_comment_create' payingguest.id %}">
+    {% csrf_token %}
+    {{ comment_form|crispy }}
+<input type="submit" value="Submit">
+</form>
+</p>
+{% endif %}
+<div class="commentbox">
+{% for comment in comments %}
+<p style="font-size:110%;"> <b>{{comment.owner}}: </b>{{ comment.text }}
+<p style="font-size:85%;">({{ comment.updated_at|naturaltime }})
+{% if user == comment.owner %}
+<a href="{% url 'payingguest:payingguest_comment_delete' comment.id %}"><i class="fa fa-trash"></i></a></p>
+{% endif %}
+
+</p>
+{% endfor %}
+
+<p>
+<a style="color: blue;" href="{% url 'payingguest:all' %}"> &larr; Back to PG list</a>
+</p>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends "book_bootstrap.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}Services | Book Store
+{% endblock title %} <!-- https://docs.djangoproject.com/en/3.0/ref/contrib/humanize -->
+{% block head %}
+<style>
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: none;
+  background-color: rgba(0,0,0,0.75); /*dim the background*/
+}
+</style>
+{% endblock %}
+<!--======================================-->
+{% block navbar %}
+{% load app_tags %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+  <!--<div class="container-fluid">-->
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <!--<ul class="nav navbar-nav">
+      {% url 'books' as books %}
+      <li {% if request.get_full_path == books %}class="active"{% endif %}>
+          <a href="{% url 'books:all' %}">Books</a></li>
+    </ul>-->
+    <!--======================================================================================-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+         </ul>
+         <hr style="border: 5px solid white;">
+    <!--======================================================================================-->
+    <ul class="nav navbar-nav navbar-right loginbutton">
+        {% if user.is_authenticated %}
+        <li style="margin-top:5px;">
+        <a href="{% url 'books:book_create' %}" style="color:white;">Add Book</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/books/fav" style="color:white;">Fav Books</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/cart/cart-detail" style="color:white;">Cart</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:white;">
+                <img class="gravatar" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'books:all' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'books:all' %}" style="color:white;">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</header>
+{% endblock %}
+<!--======================================-->
+{% block content %}
+<div class="container detailpage">
+{% if book.content_type %}
+<div id="overlay" class="overlay" style="text-align: center;"
+   onclick="document.getElementById('overlay').style.display = 'none';" >
+<img style="" class="detailimg" src="{% url 'books:book_image' book.id %}">
+</div>
+{% endif %}
+{% if book.content_type %}
+<div class="detailpageimgdiv">
+<img class="detailpageimg" src="{% url 'books:book_image' book.id %}"
+    onclick="document.getElementById('overlay').style.display = 'block';">
+    <p class="zoomtext" style="">(Click/Tap to zoom.)
+    {% if book.owner == user %}
+    <a href="{% url 'books:book_update' book.id %}"><i class="fa fa-pencil"></i></a>
+    <a href="{% url 'books:book_delete' book.id %}"><i class="fa fa-trash"></i></a>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a style="color:black;text-decoration:none;" href="{% url 'cart:cart_add' book.id %}">
+    <div class="addtocart"style="">
+      <b style="margin-right:5%;font-size:150%;">Add To Cart</b>
+      <img style="padding-bottom:2%;" src={% static "website/cart.png" %} alt="cart"/>
+    </div>
+    </a>
+    {% else %}
+    <a style="color:black;text-decoration:none;" href="{% url 'login' %}?next={% url 'cart:cart_add' book.id %}">
+    <div class="addtocart"style="">
+      <b style="margin-right:5%;font-size:150%;">Login to use cart</b>
+    </div>
+    </a>
+    {% endif %}
+    </p>
+    </div>
+{% endif %}
+<hr>
+<div class="bookdetails"style="">
+<h1>{{ book.name }}</h1>
+<p style="font-size:150%;">
+   <b>Price(&#x20B9;):</b> {{ book.price }}
+</p>
+<p style="font-size:125%;">
+<b>Condition: </b>{{ book.condition }}
+</p>
+
+<p>
+<b>Uploaded: </b>({{ book.updated_at|naturaltime }})
+</p>
+<p>
+<b>Uploaded by: </b>{{ book.owner}}
+</p>
+</div>
+
+{% if user.is_authenticated %}
+<br clear="all"/>
+
+<p>
+<div class="commentbox">
+{% load crispy_forms_tags %}
+<form method="post" action="{% url 'books:book_comment_create' book.id %}">
+    {% csrf_token %}
+    {{ comment_form|crispy }}
+<input type="submit" value="Submit">
+</form>
+</p>
+{% endif %}
+<div class="commentbox">
+{% for comment in comments %}
+<p style="font-size:110%;"> <b>{{comment.owner}}: </b>{{ comment.text }}
+<p style="font-size:85%;">({{ comment.updated_at|naturaltime }})
+{% if user == comment.owner %}
+<a href="{% url 'books:book_comment_delete' comment.id %}"><i class="fa fa-trash"></i></a></p>
+{% endif %}
+
+</p>
+{% endfor %}
+
+<p>
+<a style="color: blue;" href="{% url 'books:all' %}"> &larr; Back to book store</a>
+</p>
+</div>
+</div>
+</div>
+{% endblock %}

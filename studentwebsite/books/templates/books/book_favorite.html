@@ -1,0 +1,194 @@
+{% extends "book_bootstrap.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}Book Fav | Book Store
+{% endblock title %}
+<!--=============================================================-->
+{% block navbar %}
+{% load app_tags %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+  <!--<div class="container-fluid">-->
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <!--<ul class="nav navbar-nav">
+      {% url 'books' as books %}
+      <li {% if request.get_full_path == books %}class="active"{% endif %}>
+          <a href="{% url 'books:all' %}">Books</a></li>
+    </ul>-->
+    <!--======================================================================================-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+         </ul>
+    <!--======================================================================================-->
+    <ul class="nav navbar-nav navbar-right loginbutton">
+        {% if user.is_authenticated %}
+        <li style="margin-top:5px;">
+        <a href="{% url 'books:book_create' %}" style="color:white;">Add Book</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/books/fav" style="color:white;">Fav Books</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/cart/cart-detail" style="color:white;">Cart</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:white;">
+                <img class="gravatar" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'books:all' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'books:all' %}" style="color:white;">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</header>
+{% endblock %}
+{% block content %}
+<div class="favpagemargin">
+<!--=================================================================================================================-->
+<!--<div class="container-fluid px-0">
+    <img src="{% static "website/contact.jpg" %}" class="d-block w-100" alt="...">
+</div>-->
+<!-------------------------------------------------------------------------------->
+  <div class="searchbar" style="box-shadow: 0 12px 16px 0 rgba(0,0,0,0.5);">
+  <!-- https://www.w3schools.com/howto/howto_css_search_button.asp -->
+  <form style="text-align:center;">
+    <input type="text" placeholder="Search your fav book.." name="search"{% if search %} value="{{ search }}" {% endif %}>
+    <button type="submit"><i class="fa fa-search"></i></button>
+  <a href="{% url 'books:all' %}"><i class="fa fa-undo" style="color:white;"></i></a>
+  </form>
+  </div>
+  <p>
+  {% if book_list %}
+  <div class = "row" style="width:100%;">
+    {% for book in book_list %}
+    {% if user.is_authenticated %}
+        {% if book.id in favorites %}
+      <div class="col-sm-9 col-md-6 col-lg-3 img-thumbnail bookdiv">
+      <!--========================================================-->
+        
+          <button class="heart">
+          <!-- Two hrefs with two stacked icons each - one showing and one hidden -->
+          <a href="#" onclick=
+              "favPost('{% url 'books:book_unfavorite' book.id %}', {{ book.id }} );return false;"
+              {% if book.id not in favorites %} style="display: none;" {% endif %}
+              id="favorite_star_{{book.id}}">
+          <span class="fa-stack" style="vertical-align: middle;color: red;">
+          <i class="fa fa-heart fa-stack-2x" style="color: red;"></i>
+          <i class="fa fa-heart-o fa-stack-2x " ></i>
+          </span>
+          </a>
+          <!-- the second href -->
+          <a href="#" onclick=
+              "favPost('{% url 'books:book_favorite' book.id %}', {{ book.id }} );return false;"
+              {% if book.id in favorites %} style="display: none;" {% endif %}
+              id="unfavorite_star_{{book.id}}">
+          <span class="fa-stack" style="vertical-align: middle;">
+          <i class="fa fa-heart fa-stack-2x" style="display: none; color: red;"></i>
+          <i class="fa fa-heart-o fa-stack-2x"></i>
+          </span>
+          </a>
+          </button>
+          
+      <!--========================================================-->
+      
+      <div class="contain">
+      <a href="{% url 'books:book_detail'  book.id %}">
+        <img  class="imgphone" src="{% url 'books:book_image' book.id %}"></a>
+        <a href="{% url 'books:book_detail'  book.id %}">
+        <div class="middle">
+            <div class="text">Book Details</div>
+        </div></a>
+      </div>
+      <div style="" class="imagephone">
+      <a style="color:black;font-size:125%;font-weight: bold;" href="{% url 'books:book_detail'  book.id %}">{{ book.name }}</a>
+      <div>
+      <b>Price(&#x20B9;): </b>{{ book.price }}
+      </div>
+      </div>
+          <!--{% if book.owner == user %}-->
+          <div>
+          <a href="{% url 'books:book_update' book.id %}">(Edit |</a>
+          <a href="{% url 'books:book_delete' book.id %}">Delete)</a></div>
+          <!--{% endif %}-->
+          <div>
+          <b>Book Condition: </b>
+              {% if book.condition|length < 100 %}
+                  {{ book.condition }}
+              {% else %}
+                  {{ book.condition|slice:"0:99" }}
+                  <a href="{% url 'books:book_detail'  book.id %}">...</a>
+              {% endif %}
+          </div>
+          <small>
+          {% if book.owner.username %}
+              posted by {{ book.owner.username }}
+          {% endif %}
+          {{ book.natural_updated }}
+          </small>
+          
+      </div>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      
+      
+    
+  </div>
+  {% else %}
+    
+    <p style="text-align:center;font-weight:bold;">There are no books in the database. Try a different keyword.  <a class="retry" href="{% url 'books:all' %}">
+    
+    <i class="fa fa-undo" style="color:black;">Retry</i></a></p>
+    
+  {% endif %}
+  </p>
+  </div>
+<!--{% if user.is_authenticated %}
+<a style="font-weight: bold;font-size: 150%;" href="{% url 'logout' %}?next={% url 'books:all' %}">Logout</a>
+{% else %}
+<a style="font-weight: bold;font-size: 150%;" href="{% url 'login' %}?next={% url 'books:all' %}">Login</a>
+{% endif %}-->
+<script>
+function favPost(url, book_id) {
+    console.log('Requesting JSON');
+    $.post(url, {},  function(rowz){
+        console.log(url, 'finished');
+        $("#unfavorite_star_"+book_id).toggle();
+        $("#favorite_star_"+book_id).toggle();
+    }).fail(function(xhr) {
+        alert('Url failed with '+xhr.status+' '+url);
+    });
+}
+</script>
+</div>
+{% endblock %}

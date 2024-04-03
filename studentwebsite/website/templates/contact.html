@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact
+{% endblock title %}
+{% block header %}
+<header class="contact">
+<nav  id="myHeader" class="navbar navbar-expand-lg navbar-dark myNav">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+        <!--<a class="navbar-brand" href="#" style="font-size:225%">Student Website</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item active" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <h1 id="h1heading">Contact Us</h1>
+</header>
+{% endblock header %}
+{% block body %}
+<!--<div class="container-fluid px-0">
+    <img src="{% static "website/contact.jpg" %}" class="d-block w-100" alt="...">
+</div>-->
+<br>
+<div class="container form">
+    <h1 class="text-center">Contact Form</h1>
+    <form method="post" action="/contact">
+    {% csrf_token %}
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com">
+  </div>
+<div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="phone" class="form-control" id="phone" name="phone">
+  </div>
+  <div class="form-group">
+    <label for="desc">Why do you want to contact us</label>
+    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+<div class="responsivecontact">
+<h1 class="text-center">Contact Info</h1>
+<div  class="contactright">
+<p style="font-weight: bold;">Address</p>
+<p>Bhopal Madhya Pradesh</p>
+<br>
+<p style="font-weight: bold;">Email Us</p>
+<p>student@gmail.com</p>
+<br>
+<p style="font-weight: bold;">Call Us</p>
+<p>7889000000</p>
+</div>
+</div>
+{% endblock body %}

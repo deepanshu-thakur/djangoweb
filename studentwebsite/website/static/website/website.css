@@ -1,0 +1,1115 @@
+/*navbar styling starts here*/
+.navbar-expand-lg{
+    position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  background:transparent;
+  
+}
+.sticky {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+.home{
+  height: 650px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/book4.jpg');
+    /*background-image: url('/static/website/coding.jpg');*/
+}
+.about{
+    height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url('/static/website/about_us.jpg');
+      /*background-image: url('/static/website/coding.jpg');*/
+}
+.contact{
+    height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/contact.jpg');
+      /*background-image: url('/static/website/coding.jpg');*/
+}
+.booklist{
+    height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/homepage.jpg');*/
+
+      /*background-image: url('/static/website/coding.jpg');*/
+}
+.booklistpg{
+    height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/pg.jpg');*/
+
+      /*background-image: url('/static/website/coding.jpg');*/
+}
+
+.navbar-nav > li{
+    margin-right:30px;
+    font-size: 150%; 
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    transition: all 0.75s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover  {
+    
+  color: black;
+  background-color: #ddd;
+  border-radius: 15px; 
+}
+.active{
+    border-radius: 15px; 
+
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+.loginbutton{
+    border-radius: 15px; 
+    color:white;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    padding-left: 1%;
+}
+
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{
+    background-color: #28a745;
+    color: #ffffff;
+}
+/*navbar styling ends here*/
+/*==================================================================================================================*/
+/*footer styling starts here*/
+#sticky-footer {
+    /*margin-top: 50px;*/
+   
+   margin-top: 1%;
+   
+  left: 0;
+  bottom: 0;
+   width:100%;
+   background:#999;
+}
+/*.loginfooter{
+    margin-bottom: 247px;
+}*/
+/*footer styling ends here*/
+/*==================================================================================================================*/
+/*body styling starts here*/
+body {
+ background: #ffffff;
+ /*background: #007bff;
+   background: linear-gradient(to right, #0062E6, #33AEFF);*/
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p{
+    color: black;
+}
+h1{
+    color: black;
+}
+/*body styling ends here*/
+/*======================================================================================================================*/
+/*form styling starts here*/
+.form{
+    float: left;
+    width: 50%;
+    margin-right: 10%;
+}
+.content{
+    min-height: calc(100vh - 120px);
+}
+.contactright{
+    font-size: 150%;
+    margin-bottom: 10%;
+}
+
+
+.bannerbook{
+    height: 650px;
+}
+
+.loginphone{
+    width:30%;
+    margin-bottom:0;   /*18.5%*/
+    background-color: #afeeee ;
+    padding: 5%;
+    border-radius: 5%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.signup{
+    width:40%;
+    background-color: #afeeee ;
+    padding: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    border-radius: 0%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-bottom:5%;
+}
+.signuppagebutton{
+    width: 100%;
+}
+.gravatar{
+    width: 50px;
+    border: 2.5px solid #ffffff;
+    border-radius: 50%;
+}
+.contain {
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+.homepagecontain {
+    display: inline-block;
+    position: relative;
+    width: 49.3%;
+
+}
+.containpg {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+.imgphone{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    width:80%;
+    margin-top: 30px; 
+    border:3px solid black;
+    /**/
+   /*opacity: 1;*/
+  transition: .5s ease;
+  backface-visibility: hidden;
+  -webkit-filter: brightness(100%);
+}
+.homepageimgphone{
+    
+  
+    width:100%;
+    
+    
+    /**/
+   /*opacity: 1;*/
+  transition: .5s ease;
+  backface-visibility: hidden;
+  -webkit-filter: brightness(100%);
+}
+.imgphonepg{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    width:80%;
+    margin-top: 65px; 
+    border:3px solid black;
+    /**/
+   /*opacity: 1;*/
+  transition: .5s ease;
+  backface-visibility: hidden;
+  -webkit-filter: brightness(100%);
+}
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.homepagemiddle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 300%;
+    color: white;
+    font-weight: bold;
+}
+.middlepg {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.contain:hover .imgphone{
+    /*background-color: Black;
+    opacity:0.5;*/
+    -webkit-filter: brightness(40%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;    
+}
+.contain:hover .middle{
+    opacity: 1;
+}
+.homepagecontain:hover .homepageimgphone{
+    /*background-color: Black;
+    opacity:0.5;*/
+    -webkit-filter: brightness(40%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;    
+}
+.homepagecontain:hover .homepagemiddle{
+    opacity: 1;
+}
+.containpg:hover .imgphonepg{
+    /*background-color: Black;
+    opacity:0.5;*/
+    -webkit-filter: brightness(40%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;    
+}
+.containpg:hover .middlepg{
+    opacity: 1;
+}
+
+.text {
+    /*background-color: #fff;*/
+    background-color: #28a745;
+    color: white;
+    font-size: 125%;
+    font-weight: bold;
+    padding: 5%;
+}
+.homepagetext {
+    /*background-color: #fff;*/
+    background-color: #28a745;
+    color: white;
+    font-size: 75%;
+    font-weight: bold;
+    padding: 0%;
+}
+.searchbar{
+    margin: auto;
+  padding: 10px;
+  background-color: #28a745;
+  text-align:center;
+}
+.button{
+  color:white;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 125%;
+  text-decoration: none;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+  padding-left: 0.25%;
+  padding-right: 0.25%;
+  padding-bottom: 0.25%;
+}
+.button:hover{
+    color:white;
+    text-decoration: none;
+    padding-left: 0.5%;
+  padding-right: 0.5%;
+  padding-bottom: 0.5%;
+  font-size: 130%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.bookdiv{
+    border:0.01px solid grey;
+    border-radius: 2.5%;
+    padding-bottom: 1%;
+    
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.imagephone{
+    width:50%;
+    display:inline-block;
+}
+.heart{
+    float:right;
+    margin:2%;
+    border: none;
+    border-radius:50%;
+    padding: 2%;
+}
+.heart:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.retry{
+    border: none;
+    background-color: #4CAF50;
+    border-radius: 25%;
+    padding: 0.5%;
+}
+.retry:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-size: 110%;
+  }
+.detailimg{
+    width:30%;
+    margin-top: 0px; 
+    border:3px solid black;
+    margin: 2.5px;
+}
+.detailimgpg{
+    width:65%;
+    margin-top: 0px; 
+    border:3px solid black;
+    margin: 2.5px;
+}
+/*.bookdiv:hover{
+    box-shadow: 12px 12px 16px 12px rgba(0,0,0,0.5);
+}*/
+/*========================================================================*/
+.loginpagebutton{
+    width: 100%;
+}
+.loginpagemargin{
+    text-align:center;
+    margin-bottom:135px;
+    margin-top: 25px;
+}
+#hint_id_password1,#hint_id_password2,#hint_id_username{
+    display: none;
+}
+.addbook{
+    margin-top:70px;
+    width:75%;
+    background-color: #afeeee ;
+    padding: 2%;
+    border-radius: 1%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-bottom:5%;
+}
+#h1heading{
+    color:#ffffff;
+    position:relative;
+  text-align: center;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 500%;
+  text-shadow: 2px 2px 4px #000000;
+  /*transition-property: margin-top, font-size, text-shadow, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;*/
+}
+#h1subheading{
+    color:#ffffff;
+    position:relative;
+  text-align: center;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 200%;
+  font-style: italic;
+  text-shadow: 2px 2px 4px #000000;
+  /*transition-property: margin-top, font-size, text-shadow, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;*/
+}
+.favpagemargin{
+    margin-top:70px;
+}
+.detailpage{
+    margin-top:80px;
+    
+}
+.detailpageimg{
+    border:3px solid black;
+    max-width:60%;
+    margin-right: 0px;
+}
+.detailpageimgpg{
+    border:3px solid black;
+    max-width:90%;
+    margin-right: 0px;
+}
+.bookdetails{
+    display:inline-block;
+    width:45%;
+    vertical-align: top;
+    margin-left: 3%;
+}
+.detailpageimgdiv{
+    display:inline-block;
+     width:50%;
+    /* border:3px solid black;*/
+     padding-left: 10%;
+}
+.detailpageimgdivpg{
+    display:inline-block;
+     width:50%;
+    /* border:3px solid black;*/
+     padding-left: 10%;
+}
+hr{
+    display:none;
+}
+.commentbox{
+    background-color:#afeeee;
+    padding:5%;
+    border-radius: 2.5%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 #00000030;
+}
+.addtocart{
+    background-color: #ffffff ; /* Green */
+  border: none;
+  color: white;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border: 2px solid #4CAF50; /* Green */
+  transition-duration: 0.4s;
+}
+.addtocart:hover{
+    background-color: #4CAF50; /* Green */
+  color: white;
+}
+.cartpagebutton{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:49.8%;
+  
+  margin-bottom: 1%;
+}
+.cartimgdetail{
+    display:inline-block;
+    font-size: 150%;
+    width:50%;
+    vertical-align: middle;
+}
+.plusminus {
+    height: 50px;
+    line-height: 25px;  
+    width: 50px;  
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.itemclear{
+    margin-top:3%;
+    background-color: #f44336;
+    border: 2px solid#f44336;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 20%;
+  padding-right: 20%;
+  transition-duration: 0.4s;
+}
+.itemclear:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.cartpagebuttonbottom{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:33%;
+  margin-bottom: 1%;
+}
+.clearcart{
+    background-color: #f44336; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:33%;
+  margin-bottom: 1%;
+}
+.clearcart:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.backtobooklist{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:33%;
+  margin-bottom: 1%;
+}
+.backtobooklist:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.checkout{
+    background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:33%;
+  margin-bottom: 1%;
+}
+.checkout:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/*========================================================================*/
+/*form styling starts here*/
+/*=========================================================================================================================*/
+/*about*/
+/*======================================aboutpage aru end==========================================*/
+html {
+box-sizing: border-box;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+.column {
+float: left;
+width: 33.3%;
+margin-bottom: 16px;
+padding: 0 8px;
+}
+
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: 8px;
+}
+
+.about-section {
+padding: 1.5%;
+text-align: center;
+background-color:#008CBA;
+color: white;
+}
+
+.about-section h2{
+    text-align:center;
+    font-weight: bold;
+}
+
+.container::after, .row::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.title {
+color: grey;
+}
+
+.buttonaboutpage {
+border: none;
+outline: 0;
+display: inline-block;
+padding: 8px;
+color: white;
+background-color: #008CBA;
+text-align: center;
+cursor: pointer;
+width: 100%;
+}
+
+.buttonaboutpage:hover {
+background-color: #4CAF50;
+}
+/*======================================aboutpage aru end==========================================*/
+
+/*======================================homepage aashu start==========================================*/
+.cr9{
+    width:45% ;
+    display:inline;
+    position: relative;
+    transition: .5s ease;
+}
+  
+  
+.cr7{
+    height:35%;
+    width:37%;
+    box-shadow:10px 5px 10px 5px grey;
+    border-color:black;
+    margin:6.2%;
+    opacity:1;
+    transition: .5s ease;
+}
+.textii{
+    background-color:#80bfff;
+    color: black;
+    font-size: 225%;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 5%;
+
+}
+
+.cr9:hover .cr7{
+    opacity:0.3;
+}
+.cr9:hover .middle{
+    opacity: 1;
+}
+.homepagetextdiv{
+    display:inline-block;
+    width:47%;
+    margin-left:2%;
+    vertical-align: middle;
+}
+.homepagetextdiv p{
+    font-size:125%;
+}
+.homepagetextdiv ul{
+    font-size:125%;
+    color:black;
+}
+/*======================================homepage aashu end==========================================*/
+.myflip{
+    display: none;
+}
+
+
+@media only screen and (max-width: 768px){  /*responsive form styling*/
+.home{
+    height: 225px;
+  background-attachment: fixed;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: 100% 45%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url('/static/website/book4.jpg');
+}
+.about{
+    height: 225px;
+  background-attachment: fixed;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: 100% 45%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url('/static/website/about_us.jpg');
+}
+.contact{
+    height: 225px;
+  background-attachment: fixed;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: 100% 45%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/contact.jpg');
+}
+.booklist{
+    height: 225px;
+  background-attachment: fixed;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: 100% 45%;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/homepage.jpg');
+}
+.booklistpg{
+    height: 225px;
+  background-attachment: fixed;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: 100% 45%;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url('/static/website/pg.jpg');
+}
+.form{
+    width: 90%;
+    margin-bottom: 10%;
+}
+.contactright{
+    font-size: 100%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.bannerbook{
+    height: auto;
+}
+.loginphone{
+    width:80%;
+}
+/*.signup{
+    width:100%;
+    margin-top:5%;
+}*/
+.imgphone{
+    width: 80%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+.homepageimgphone{
+    width: 80%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+.imgphonepg{
+    width: 80%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.searchbar{
+    margin: auto;
+  width: 100%;
+  background-color: #28a745;
+  padding: 10px;
+}
+.button{
+    padding-left: 0.5%;
+  padding-right: 0.5%;
+  padding-bottom: 0.5%;
+  font-size: 130%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.navbar{
+    background-color: #007bff;
+    z-index: 1;
+}
+.imagephone{
+    width: 100%;
+}
+.detailimg{
+    width:95%;
+    margin-top: 0px; 
+    border:3px solid black;
+    
+}
+.detailimgpg{
+    width:100%;
+    margin-top: 50%; 
+    border:3px solid black; 
+}
+.text{
+    display: none;
+}
+.homepagetext{
+    display: none;
+}
+.loginpagemargin{
+    text-align:center;
+    margin-bottom:90px;
+}
+.signup{
+    width:90%;
+}
+.addbook{
+    width:90%;
+}
+#h1heading{
+    color:#ffffff;
+    position:relative;
+  text-align: center;
+  top:57.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 200%;
+  text-shadow: 2px 2px 4px #000000;
+}
+#h1subheading{
+    color:#ffffff;
+    position:relative;
+  text-align: center;
+  top:57.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 100%;
+  font-style: italic;
+  text-shadow: 2px 2px 4px #000000;
+}
+.favpagemargin{
+    margin-top:60px;
+}
+.detailpage{
+    margin-top:70px;
+}
+.detailpageimg{
+    border:3px solid black;
+    display:block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+}
+.detailpageimgpg{
+    border:3px solid black;
+    display:block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+}
+.zoomtext{
+    text-align:center;
+}
+.bookdetails{
+    display:inline-block;
+    width:100%
+}
+.detailpageimgdiv{
+    display:inline-block; 
+    width:100%;
+    padding-left: 0%;
+}
+.detailpageimgdivpg{
+    display:inline-block; 
+    width:100%;
+    padding-left: 0%;
+}
+.bookdetails h1{
+    display:inline-block;
+    width:100%;
+    font-size: 200%;
+    text-align: center;
+}
+hr{
+    display:revert;
+    border: 5px solid #28a745;
+  border-radius: 5px;
+}
+.commentbox{
+    background-color:#afeeee;
+    padding:5%;
+    border-radius: 0%;
+    box-shadow: 0 12px 12px 0 rgba(0,0,0,0.24), 0 10px 25px 0 #00000030;
+    margin-bottom: 5%;
+    display: inline-block;
+    width:100%;
+}
+.addtocart{
+    background-color: #4CAF50; /* Green */
+}
+.cartpagebutton{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  /*padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:100%;
+  
+  margin-bottom: 1%;
+}
+.cartimgdetail{
+    display:inline-block;
+    width:55%;
+    font-size: 100%;
+}
+.plusminus {
+    height: 50px;
+    line-height: 25px;  
+    width: 50px;  
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.itemclear{
+    margin:3%;
+    width:100%;
+}
+.cartpagebuttonbottom{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 110%;
+  width:100%;
+  margin-bottom: 1%;
+}
+.clearcart{
+  width:100%;
+}
+.backtobooklist{
+    width:100%;
+}
+.checkout{
+    width:100%;
+}
+/*======================================homepage mobile aashu start==========================================*/
+.cr9{
+    width:35% ;
+    display:inline;
+    position: relative;
+    transition: .5s ease;
+}
+  
+  
+.cr7{
+    height:35%;
+    width:36%;
+    box-shadow:10px 5px 10px 5px grey;
+    border-color:black;
+    margin:6.2%;
+    opacity:1;
+    transition: .5s ease;
+}
+.textii{
+    background-color:#80bfff;
+    color: black;
+    font-size: 225%;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 5%;
+
+}
+
+.cr9:hover .cr7{
+    opacity:0.3;
+}
+.cr9:hover .middle{
+    opacity: 1;
+}
+
+
+/*======================================homepage mobile aashu end==========================================*/
+.column {
+    width: 100%;
+}
+
+.about-section h2{
+    text-align:center;
+    font-size: 150%;
+}
+.homepagetextdiv{
+    display:block;
+    width:100%;
+    margin-left:0%;
+    vertical-align: middle;
+}    
+.homepagemiddle{
+    display: none;
+}
+.homepagecontain {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+.bigscreen{
+    display: none;
+}
+/*=====================================================flipcard========================================*/
+.myflip{
+    display:revert;
+}
+.flip-card {
+    background-color: transparent;
+    width: 320px;
+    height: 215px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    color: #ffffff;
+    transform: rotateY(180deg);
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;background-color:#28a745;text-align:center;width:40%;margin:auto;font-size:125%;
+  }
+}

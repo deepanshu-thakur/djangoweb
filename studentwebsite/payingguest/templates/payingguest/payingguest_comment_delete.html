@@ -1,0 +1,85 @@
+{% extends "base_bootstrap.html" %}
+{% load humanize %}
+{% block title %}Comment Delete | PG
+{% endblock title %}
+<!--=============================================================-->
+{% block navbar %}
+{% load app_tags %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky">
+<a class="navbar-brand" href=""><i class="fas fa-book-reader" style="font-size:200%;"></i></a>
+
+  <!--<div class="container-fluid">-->
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <!--<ul class="nav navbar-nav">
+      {% url 'books' as books %}
+      <li {% if request.get_full_path == books %}class="active"{% endif %}>
+          <a href="{% url 'books:all' %}">Books</a></li>
+    </ul>-->
+    <!--======================================================================================-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/books">Second hand books</a>
+                <a class="dropdown-item" href="/payingguest">Find PG</a>
+              </div>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+         </ul>
+    <!--======================================================================================-->
+    <ul class="nav navbar-nav navbar-right loginbutton">
+        {% if user.is_authenticated %}
+        <li style="margin-top:5px;">
+        <a href="{% url 'payingguest:payingguest_create' %}" style="color:white;">Add PG</a>
+        </li>
+        <li style="margin-top:5px;">
+        <a href="/payingguest/fav" style="color:white;">Fav PG</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:white;">
+                <img class="gravatar" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'payingguest:all' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'payingguest:all' %}" style="color:white;">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+</header>
+{% endblock %}
+{% block content %}
+<div style="margin-top:70px">
+<h1>Delete Comment</h1>
+
+<p>Are you sure you want to delete</p>
+<p>{{ pgcomment.text }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit"  class="btn btn-primary" value="Yes, delete.">
+  <a href="{% url 'payingguest:payingguest_detail' pgcomment.payingguest.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+</div>
+{% endblock %}
